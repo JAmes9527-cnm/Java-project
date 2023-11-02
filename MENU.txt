@@ -1,0 +1,5 @@
+F01,niggaballs,12.5,nigga
+F02,fish,23,teh
+F03,eqwe,6,w
+asd,rice,RM54,teh
+123,123,123,123
