@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.List;
+import java.util.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,7 +39,9 @@ public class customerMenu extends javax.swing.JFrame {
         try (BufferedReader reader = new BufferedReader(new FileReader("MENU.txt"))) {
         String line;
         //boolean isFirstLine = true;
-
+        
+        int i=0;
+        List<MenuItem> menuItem = new ArrayList<>();
         while ((line = reader.readLine()) != null) {
            
 
@@ -47,8 +51,10 @@ public class customerMenu extends javax.swing.JFrame {
                 String Name = MenuData[1];
                 String Price = MenuData[2];
                 String vendor_name = MenuData[3];
-               
-                model.addRow(new Object[]{FoodId, Name, Price, vendor_name});
+                MenuItem menuItemObj = new MenuItem(FoodId, Name, Price, vendor_name);
+                menuItem.add(menuItemObj);
+                model.addRow(new Object[]{menuItem.get(i).getId(),menuItem.get(i).getName(), menuItem.get(i).getPrice(), menuItem.get(i).getVendorName()});
+                i++;
             } else {
                 System.out.println("Invalid line: " + line);
             }

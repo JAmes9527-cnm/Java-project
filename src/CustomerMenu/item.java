@@ -48,20 +48,5 @@ public class item {
 
  
  
-class MenuItem extends item {
-    private String vendorName;
 
-    public MenuItem(String Id, String Name, String Price, String vendorName) {
-        super(Id, Name, Price);
-        this.vendorName = vendorName;
-    }
-
-        public String getVendorName() {
-            return vendorName;
-        }
-
-        public void setVendorName(String vendorName) {
-            this.vendorName = vendorName;
-        }
-    }
 
