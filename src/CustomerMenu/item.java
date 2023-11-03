@@ -43,6 +43,10 @@ public class item {
         this.Price = Price;
     }
     
+    @Override
+    public String toString(){
+        return Id+","+Name+","+Price;
+    }
     
 }
 

@@ -57,12 +57,12 @@ public class OrderHistory extends javax.swing.JFrame {
            
 
             String[] MenuData = line.split(",");
-            if (MenuData.length == 2) {
+            if (MenuData.length == 5) {
                 String FoodId = MenuData[0];
-                String Name = FoodChecker.findFoodName(FoodId);
-                String Price = Double.toString(FoodChecker.findFoodPrice(FoodId));
-                String vendor_name = FoodChecker.findFoodVendor(FoodId);
-                String Quantity = MenuData[1];
+                String Name = MenuData[1];
+                String Price = MenuData[2];
+                String vendor_name = MenuData[3];
+                String Quantity = MenuData[4];
                
                 model.addRow(new Object[]{FoodId, Name, Price, vendor_name, Quantity});
             } else {

@@ -25,6 +25,7 @@ public class CustomerLogin extends javax.swing.JFrame {
         initComponents();
     }
 
+    public static String customerID;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,7 +121,7 @@ public class CustomerLogin extends javax.swing.JFrame {
         }
         else if(CustomerChecker.doesCustomerIDExist(CustomerID)){
                 if(password.equals(CustomerChecker.findCustomerPassword(CustomerID))){
-                    try {
+                    /*try {
                             File myObj = new File("currentCustomer.txt");
                             if (myObj.createNewFile()) {
                                 FileWriter myWriter = new FileWriter("currentCustomer.txt");
@@ -137,7 +138,8 @@ public class CustomerLogin extends javax.swing.JFrame {
                     catch (IOException e) {
                             System.out.println("An error occurred.");
                             e.printStackTrace();
-                        }
+                        }*/
+                    customerID = CustomerID;
                     CustomerUI menu = new CustomerUI();
                     menu.setVisible(true);
                     dispose();

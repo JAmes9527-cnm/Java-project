@@ -8,7 +8,7 @@ package CustomerMenu;
  *
  * @author james
  */
-class MenuItem extends item {
+public class MenuItem extends item {
     private String vendorName;
 
     public MenuItem(String Id, String Name, String Price, String vendorName) {
@@ -23,4 +23,9 @@ class MenuItem extends item {
         public void setVendorName(String vendorName) {
             this.vendorName = vendorName;
         }
+        
+    @Override
+    public String toString(){
+        return super.toString()+","+vendorName;
     }
+}

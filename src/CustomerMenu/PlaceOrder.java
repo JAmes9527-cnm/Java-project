@@ -111,7 +111,7 @@ int confirmation = JOptionPane.showOptionDialog(
 if (confirmation == 0) {
     // User clicked "Accept" (customOptions[0])
     // Handle the order confirmation logic here
-    if(CustomerChecker.findCustomerCredit(CurrentCustomer.getID()) >= totalPrice){
+    if(CustomerChecker.findCustomerCredit(CustomerLogin.customerID) >= totalPrice){
         JOptionPane.showMessageDialog(null, "Order Success");
         CustomerChecker.deductCustomerCredit(totalPrice);
         String currentTime = Time.getOrderTime();
@@ -125,7 +125,7 @@ if (confirmation == 0) {
     }
         // Specify the old file name and the new file name
         FileCopier.FileCopy(CurrentCustomer.getCartPath(), "Order"+currentTime+".txt");
-        String OrderHistoryPath = CurrentCustomer.getID()+"OrderHistory.txt";
+        String OrderHistoryPath = CustomerLogin.customerID+"OrderHistory.txt";
         File OrderHistory = new File(OrderHistoryPath);
         if(!OrderHistory.exists()){
             try{
@@ -134,6 +134,30 @@ if (confirmation == 0) {
       System.out.println("An error occurred.");
       e.printStackTrace();
             }
+            try {
+            // Create a FileWriter with append mode (true)
+            FileWriter fileWriter = new FileWriter(OrderHistoryPath, true);
+
+            // Text to append to the file
+            String OrderID= OrderPath;
+
+            // Append the text to the file
+            fileWriter.write(OrderID + "\n");
+
+            // Close the FileWriter
+            fileWriter.close();
+
+            System.out.println("String appended to the file successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            File CartFile = new File(CurrentCustomer.getCartPath());
+            CartFile.delete();
+            customerMenu menu = new customerMenu();
+            menu.setVisible(true);
+            Cart cart = new Cart();
+            cart.dispose();
+            dispose();
 
         }
         else{
@@ -156,6 +180,10 @@ if (confirmation == 0) {
         }
             File CartFile = new File(CurrentCustomer.getCartPath());
             CartFile.delete();
+            customerMenu menu = new customerMenu();
+            menu.setVisible(true);
+            Cart cart = new Cart();
+            cart.dispose();
             dispose();
         }
     }

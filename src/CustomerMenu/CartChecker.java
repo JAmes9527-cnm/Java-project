@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class CartChecker {
     public static double getTotal() {
-        String filename = CurrentCustomer.getID() + "Cart.txt";
+        String filename = CustomerLogin.customerID + "Cart.txt";
         double total = 0.0; // Initialize total outside the try block
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -22,10 +22,10 @@ public class CartChecker {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
-                if (data.length == 2) {
+                if (data.length == 5) {
                     String foodID = data[0].trim(); // Trim any leading/trailing spaces
-                    int quantity = Integer.parseInt(data[1].trim());
-                    double foodPrice = FoodChecker.findFoodPrice(foodID);
+                    int quantity = Integer.parseInt(data[4].trim());
+                    double foodPrice = Double.parseDouble(data[2].trim());
                     total += (foodPrice * quantity);
                 }
             }

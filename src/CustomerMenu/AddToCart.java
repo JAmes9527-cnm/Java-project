@@ -128,7 +128,7 @@ public class AddToCart extends javax.swing.JFrame {
 
         else if(doesFoodIDExist(FoodID)){
    try {
-    Path path = Paths.get(CurrentCustomer.getID()+"Cart.txt");
+    Path path = Paths.get(CustomerLogin.customerID+"Cart.txt");
 
     if (!Files.exists(path)) {
         Files.createFile(path);
@@ -168,7 +168,8 @@ public class AddToCart extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Quantity updated successfully.");
     } else {
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path.toString(), true))) {
-            bufferedWriter.write(FoodID + "," + Quantity  + "\n");
+            CartItem Food = new CartItem(FoodID,FoodChecker.findFoodName(FoodID),Double.toString(FoodChecker.findFoodPrice(FoodID)),FoodChecker.findFoodVendor(FoodID),Quantity);
+            bufferedWriter.write(Food.toString() + "\n");
         }
         JOptionPane.showMessageDialog(null, "Food added successfully.");
     }

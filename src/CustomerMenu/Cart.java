@@ -46,12 +46,12 @@ public class Cart extends javax.swing.JFrame {
            
 
             String[] CartData = line.split(",");
-            if (CartData.length == 2) {
+            if (CartData.length == 5) {
                 String FoodId = CartData[0];
-                String Name = FoodChecker.findFoodName(FoodId);
-                String Price = Double.toString(FoodChecker.findFoodPrice(FoodId));
-                String vendor_name = FoodChecker.findFoodVendor(FoodId);
-                int Quantity = Integer.parseInt(CartData[1]);
+                String Name = CartData[1];
+                String Price = CartData[2];
+                String vendor_name = CartData[3];
+                String Quantity = CartData[4];
                
                 model.addRow(new Object[]{FoodId, Name, Price, vendor_name, Quantity});
             } else {

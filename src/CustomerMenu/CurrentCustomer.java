@@ -13,7 +13,21 @@ import java.util.List;
 
 public class CurrentCustomer {
     
-    public static String getID() {
+    public String ID;
+    
+    public String getID(){
+        return ID;
+    }
+    
+    public void setID(String ID){
+        this.ID=ID;
+    }
+    
+    public CurrentCustomer(String CustomerID){
+        this.ID=CustomerID;
+    }
+    
+    /*public static String getIDfromfile() {
         String fileName = "currentCustomer.txt"; // Replace with the actual file path
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
@@ -30,20 +44,20 @@ public class CurrentCustomer {
             ex.printStackTrace();
             return ""; // Return an empty string in case of an error
         }
-    }
+    }*/
     
     public static String getCartPath(){
-        String path = getID()+"Cart.txt";
+        String path = CustomerLogin.customerID+"Cart.txt";
         return path;
     }
     
     public static double getCredit(){
-        double credit = CustomerChecker.findCustomerCredit(getID());
+        double credit = CustomerChecker.findCustomerCredit(CustomerLogin.customerID);
         return credit;
     }
     
     public static String getOrderHistoryPath(){
-        String path = getID()+"OrderHistory.txt";
+        String path = CustomerLogin.customerID+"OrderHistory.txt";
         return path;
     }
     

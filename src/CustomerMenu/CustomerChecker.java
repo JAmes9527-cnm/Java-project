@@ -82,7 +82,7 @@ public class CustomerChecker {
     }
     
     public static void deductCustomerCredit(double credit){
-        String customerID = CurrentCustomer.getID();
+        String customerID = CustomerLogin.customerID;
     String filename = "Customer.txt";
 
     // Create a temporary file to write updated data
